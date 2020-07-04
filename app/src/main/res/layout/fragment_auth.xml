@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.br.indica.view_model.AuthViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="10dp"
+        tools:context=".ui.user.auth.AuthFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/label_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/sign_in"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/label_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/username" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/label_username"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/ic_profile"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:padding="5dp"
+            android:text="@={viewmodel.username}"
+            tools:text="@string/username" />
+
+        <TextView
+            android:id="@+id/label_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
+            android:layout_marginTop="10dp"
+            android:text="@string/password" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/label_password"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/ic_visibility"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:text="@={viewmodel.password}"
+            tools:text="@string/password" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/password"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:onClick="@{() -> viewmodel.auth()}"
+            android:text="@string/sign_in"
+            android:textColor="@color/colorPrimary" />
+
+    </RelativeLayout>
+</layout>
