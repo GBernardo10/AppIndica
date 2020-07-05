@@ -3,10 +3,11 @@ package com.br.indica.service.user_service
 import com.br.indica.domain.model.Credential
 import com.br.indica.domain.model.response.Token
 import io.reactivex.Flowable
+import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface UserService {
-    @GET("/")
-    fun auth(@Body credential: Credential): Flowable<Token>
+    @POST("/auth")
+    fun auth(@Body credential: Credential): Flowable<Response<Credential>>
 }

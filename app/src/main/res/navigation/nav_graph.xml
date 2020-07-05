@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/registerUserFragment"
+    app:startDestination="@id/profileFragment"
     tools:ignore="UnusedNavigation">
 
     <fragment
@@ -16,25 +16,48 @@
         android:id="@+id/mainFragment"
         android:name="com.br.indica.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main">
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.br.indica.ui.ProfileFragment"
+        android:name="com.br.indica.ui.user.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/authFragment"
         android:name="com.br.indica.ui.user.auth.AuthFragment"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
-    <fragment
-        android:id="@+id/registerUserFragment"
-        android:name="com.br.indica.ui.user.register.RegisterUserFragment"
-        android:label="fragment_register_user"
-        tools:layout="@layout/fragment_register_user" />
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_authFragment_to_nav_register_user"
+            app:destination="@id/nav_register_user" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/nav_register_user"
+        app:startDestination="@id/registerUserFragment">
+
+        <fragment
+            android:id="@+id/registerUserFragment"
+            android:name="com.br.indica.ui.user.register.RegisterUserFragment"
+            android:label="fragment_register_user"
+            tools:layout="@layout/fragment_register_user">
+            <action
+                android:id="@+id/action_registerUserFragment_to_congratulationsFragment"
+                app:destination="@id/congratulationsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/congratulationsFragment"
+            android:name="com.br.indica.ui.user.register.CongratulationsFragment"
+            android:label="fragment_congratulations"
+            tools:layout="@layout/fragment_congratulations">
+
+            <argument
+                android:name="username"
+                app:argType="string"
+                app:nullable="false" />
+        </fragment>
+
+    </navigation>
+
 </navigation>

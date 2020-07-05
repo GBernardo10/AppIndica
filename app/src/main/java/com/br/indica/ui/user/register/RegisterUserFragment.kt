@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil.inflate
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.br.indica.R
 import com.br.indica.databinding.FragmentRegisterUserBinding
 import com.br.indica.ui.MainActivity
@@ -30,6 +31,15 @@ class RegisterUserFragment : Fragment() {
             lifecycleOwner = this@RegisterUserFragment
         }
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val directions =
+            RegisterUserFragmentDirections.actionRegisterUserFragmentToCongratulationsFragment("Guilherme")
+        binding.btnSignUp.setOnClickListener {
+            findNavController().navigate(directions)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
